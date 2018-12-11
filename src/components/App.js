@@ -18,6 +18,7 @@ class App extends Component {
             <Route path='/characters' component={Characters} />
             <Route path='/locations' component={Locations} />
             <Route path='/episodes' component={Episodes} />
+            <Route render={()=><h2>not found</h2>} />
           </Switch>
         </div>
       </Router>

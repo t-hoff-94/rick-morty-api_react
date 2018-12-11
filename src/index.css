@@ -57,6 +57,7 @@ a {
   margin: 0 7px;
 }
 .active {
+  color: #666!important;
   font-weight: bold;
   text-decoration: underline;
 }
@@ -171,7 +172,7 @@ a {
 
 .location-list {
   border-collapse: collapse;
-  margin: 0 auto;
+  margin: 3em auto;
 }
 .location-list td {
   padding: 10px 7px 3px;
