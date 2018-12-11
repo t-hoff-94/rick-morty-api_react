@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PagePicker from './PagePicker'
 import Character from './Character'
 import { parse } from 'query-string'
-import { getAllCharacters } from '../utils/api'
+import { getCategoryPage } from '../utils/api'
 
 class Characters extends Component {
   state = {
@@ -22,7 +22,7 @@ class Characters extends Component {
 
   async updatePage(page) {
     this.setState(()=>({loading: true}));
-    const results = await getAllCharacters(page);
+    const results = await getCategoryPage('character', page);
     const currentPage = this.props.location.search === ''
     ? 1 : parse(this.props.location.search).page;
     this.setState(()=>({characters: results, currentPage: currentPage, loading: false}));
@@ -42,6 +42,9 @@ class Characters extends Component {
               <Character key={character.id} data={character} />
             ))}
           </div>
+          <PagePicker
+            category='characters'
+            currentPage={currentPage}/>
         </div>
   }
 }

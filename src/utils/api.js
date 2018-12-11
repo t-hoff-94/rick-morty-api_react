@@ -12,8 +12,8 @@ export async function getCharacters(...ids) {
   return repos;
 }
 
-export async function getAllCharacters(page) {
-  const encodedURI = window.encodeURI(`https://rickandmortyapi.com/api/character${page}`);
+export async function getCategoryPage(category, page) {
+  const encodedURI = window.encodeURI(`https://rickandmortyapi.com/api/${category}${page}`);
 
   const response = await fetch(encodedURI)
     .catch((handleError));
