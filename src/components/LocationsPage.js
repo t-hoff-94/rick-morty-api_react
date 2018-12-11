@@ -25,7 +25,7 @@ const LocationList = ({ list }) => (
     </table>
 )
 
-class Locations extends Component {
+class LocationsPage extends Component {
   state = {
     locations: null,
     currentPage: 1,
@@ -66,4 +66,4 @@ class Locations extends Component {
   }
 }
 
-export default Locations;
+export default LocationsPage;

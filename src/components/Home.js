@@ -22,9 +22,15 @@ class Home extends Component {
       ? <div>loading</div>
       : <div>
           <div className='characters-container'>
-            {characters.map((character) => (
-              <Character data={character} key={character.id}/>
-            ))}
+            {characters.map(character => {
+              if(character.id === 1) {
+                return (
+                  <Character key={character.id} data={character} special='true' />
+                )
+              } else {
+                return <Character key={character.id} data={character} />
+              }
+            })}
           </div>
           <Link className='button center' to='/characters'>
           View All Characters

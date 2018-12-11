@@ -20,7 +20,6 @@ class Character extends Component {
 
   render() {
     const { data } = this.props;
-
     return (
       <div className='fig-ctr'>
         <figure className='character'>
