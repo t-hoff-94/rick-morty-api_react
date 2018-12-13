@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { getCategoryPage } from '../utils/api'
 import { parse } from 'query-string'
 import PagePicker from './PagePicker'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import slug from 'slug'
+import Episode from './Episode'
 
 
 const EpisodesList = ({ list }) => (
@@ -20,7 +21,7 @@ const EpisodesList = ({ list }) => (
               <td>
                 <Link
                   to={{
-                    pathname: `/${slug(episode.name)}`,
+                    pathname: `episodes/${slug(episode.name)}`,
                     search: `id=${episode.id}`
                   }}>
                   {episode.name}
@@ -54,6 +55,7 @@ class EpisodesPage extends Component {
   async updatePage(page) {
     this.setState(()=>({loading: true}));
     const results = await getCategoryPage('episode', page);
+    console.log(results)
     const numPages = results.info.pages;
     const currentPage = this.props.location.search === ''
     ? 1 : parse(this.props.location.search).page;
@@ -62,6 +64,7 @@ class EpisodesPage extends Component {
 
   render() {
     const { episodes, currentPage, numPages } = this.state;
+    const { match } = this.props
 
     return this.state.loading === true
       ? <div>loading</div>

@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { getCategoryPage } from '../utils/api'
 import { parse } from 'query-string'
+import { Link, Route, Switch } from 'react-router-dom'
 import PagePicker from './PagePicker'
+import Locationode from './Locationode'
+import slug from 'slug'
 
 
-const LocationList = ({ list }) => (
-  <table className='location-list' style={{color: '#222'}}>
+const LocationList = ({ list, match }) => (
+  <div>
+    <table className='episode-list' style={{color: '#222'}}>
       <tbody>
         <tr>
           <th>Name</th>
@@ -15,7 +19,15 @@ const LocationList = ({ list }) => (
         {list.map(location => {
           return (
             <tr key={location.id}>
-              <td>{location.name}</td>
+              <td>
+                <Link
+                  to={{
+                    pathname: `locations/${slug(location.name)}`,
+                    search:`id=${location.id}`
+                  }}>
+                  {location.name}
+                </Link>
+              </td>
               <td>{location.type}</td>
               <td>{location.dimension}</td>
             </tr>
@@ -23,6 +35,7 @@ const LocationList = ({ list }) => (
         })}
       </tbody>
     </table>
+  </div>
 )
 
 class LocationsPage extends Component {
@@ -48,11 +61,11 @@ class LocationsPage extends Component {
     const currentPage = this.props.location.search === ''
     ? 1 : parse(this.props.location.search).page;
     this.setState(()=>({locations: results, numPages: numPages, currentPage: currentPage, loading: false}));
-    console.log(this.state)
   }
 
   render() {
     const { currentPage, numPages } = this.state;
+    const { match } = this.props;
 
     return this.state.loading === true
       ? <div>loading</div>

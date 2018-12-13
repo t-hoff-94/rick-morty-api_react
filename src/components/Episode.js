@@ -3,12 +3,17 @@ import { Link } from 'react-router-dom'
 import { getCategoryPage } from '../utils/api'
 import { parse } from 'query-string'
 import Character from './Character'
+import { reverseAcronym } from '../utils/helper'
 
 
 const EpisodeInfo = ({ name, episode, airDate })=> (
   <div className='episode-info container'>
-    <h1 className='episode-header'>{name}</h1>
-    <h2 className='episode-header'>Episode Characters <span style={{fontSize: '16px'}}>(some of them)</span></h2>
+    <h1 style={{color: '#333'}} className='episode-header'>{name}</h1>
+    <ul className=' center'>
+      <li><h4>Episode <div>{reverseAcronym(episode)}</div></h4></li>
+      <li><h4>Air Date <div>{airDate}</div></h4></li>
+    </ul>
+    <h2 style={{marginTop: '3em'}} className='episode-header'>Episode Characters <span style={{fontSize: '16px'}}>(some of them)</span></h2>
   </div>
 )
 
@@ -32,14 +37,13 @@ class Episode extends Component {
 
     const results = await getCategoryPage('episode/', parse(this.props.location.search).id);
 
-    const rez = results.characters.map(string => {
+    const characterString = results.characters.map(string => {
       return  string.split('/').slice(5).join('');
     })
 
-    const chaz = await getCategoryPage('character/', rez);
-    console.log(chaz)
+    const characters = await getCategoryPage('character/', characterString);
 
-    this.setState(()=>({episode: results, episodeCharacters: chaz, loading: false,}));
+    this.setState(()=>({episode: results, episodeCharacters: characters, loading: false,}));
   }
 
   render() {
@@ -54,6 +58,9 @@ class Episode extends Component {
             airDate={air_date} />
           <EpisodeCharacters
             characters={this.state.episodeCharacters} />
+          <Link className='button center' to='/characters'>
+          View All Characters
+          </Link>
         </div>
   }
 }
