@@ -35,6 +35,7 @@ const LocationList = ({ list, match }) => (
         })}
       </tbody>
     </table>
+    <Route path='/locations/:locationId'  component={Locationode} />
   </div>
 )
 
@@ -75,6 +76,7 @@ class LocationsPage extends Component {
             numPages={numPages}
             currentPage={currentPage}/>
           <LocationList list={this.state.locations.results} />
+
         </div>
   }
 }

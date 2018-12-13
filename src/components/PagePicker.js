@@ -6,7 +6,7 @@ export default function PagePicker(props) {
   let nextPage = parseInt(currentPage) + 1;
   if ( nextPage > numPages ) {
     nextPage = 1;
-  } 
+  }
 
   return (
     <div className='page-picker'>
@@ -14,7 +14,7 @@ export default function PagePicker(props) {
       className='button'
       to={{
         pathname: `/${category}`,
-        search: `?page=${nextPage - 2}`
+        search: `?page=${currentPage - 1}`
       }}>
     Prev
     </Link>
