@@ -7,12 +7,12 @@ class Character extends Component {
   }
 
   state = {
-    active: false,
+    active: this.props.special,
   }
 
   handleClick = (e) => {
     e.preventDefault();
-    this.state.active
+    this.state.active 
     ? this.setState(()=>({active: false}))
     : this.setState(()=>({active: true}))
 

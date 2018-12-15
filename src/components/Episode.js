@@ -9,11 +9,15 @@ import { reverseAcronym } from '../utils/helper'
 const EpisodeInfo = ({ name, episode, airDate })=> (
   <div className='episode-info container'>
     <h1 style={{color: '#333'}} className='episode-header'>{name}</h1>
-    <ul className=' center'>
-      <li><h4>Episode <div>{reverseAcronym(episode)}</div></h4></li>
-      <li><h4>Air Date <div>{airDate}</div></h4></li>
+    <ul className='center'>
+      <li>
+        <h4>Episode <div>{reverseAcronym(episode)}</div></h4>
+      </li>
+      <li>
+        <h4>Air Date <div>{airDate}</div></h4>
+      </li>
     </ul>
-    <h2 style={{marginTop: '3em'}} className='episode-header'>Episode Characters <span style={{fontSize: '16px'}}>(some of them)</span></h2>
+    <h2 style={{marginTop: '2em'}} className='episode-header'>Episode Characters <span style={{fontSize: '16px'}}>(some of them)</span></h2>
   </div>
 )
 
@@ -47,7 +51,7 @@ class Episode extends Component {
   }
 
   render() {
-    const { air_date, characters, episode, name } = this.state.episode;
+    const { air_date, episode, name } = this.state.episode;
 
     return this.state.loading === true
       ? <div>loading</div>

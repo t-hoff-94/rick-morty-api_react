@@ -18,7 +18,7 @@ export default function PagePicker(props) {
       }}>
     Prev
     </Link>
-    <p>page: {currentPage}</p>
+    <p style={{fontWeight: '300'}}>Page: {currentPage}</p>
     <Link
       className='button'
       to={{

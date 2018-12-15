@@ -6,7 +6,7 @@ import CharactersPage from './CharactersPage'
 import LocationsPage from './LocationsPage'
 import EpisodesPage from './EpisodesPage'
 import Episode from './Episode'
-import Locationode from './Locationode'
+import Location from './Location'
 
 class App extends Component {
   render() {
@@ -20,9 +20,9 @@ class App extends Component {
             <Route path='/characters' component={CharactersPage} />
             <Route exact path='/locations' component={LocationsPage} />
             <Route exact path='/episodes' component={EpisodesPage} />
-            <Route path='/locations/:locationId'  component={Locationode} />
+            <Route path='/locations/:locationId'  component={Location} />
             <Route path='/episodes/:episodeId'  component={Episode} />
-            <Route render={()=><h2>not found</h2>} />
+            <Route render={()=><h2 style={{textAlign: 'center'}}>not found</h2>} />
           </Switch>
         </div>
       </Router>

@@ -2,18 +2,16 @@ import React, { Component } from 'react'
 import { getCategoryPage } from '../utils/api'
 import { parse } from 'query-string'
 import PagePicker from './PagePicker'
-import { Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import slug from 'slug'
-import Episode from './Episode'
 
 
 const EpisodesList = ({ list }) => (
-  <table className='location-list' style={{color: '#222'}}>
+  <table className='table-list' style={{color: '#222'}}>
       <tbody>
         <tr>
           <th>Name</th>
           <th>Episode</th>
-          <th>Air date</th>
         </tr>
         {list.map(episode => {
           return (
@@ -28,7 +26,6 @@ const EpisodesList = ({ list }) => (
                 </Link>
               </td>
               <td>{episode.episode}</td>
-              <td>{episode.air_date}</td>
             </tr>
           )
         })}
@@ -64,7 +61,6 @@ class EpisodesPage extends Component {
 
   render() {
     const { episodes, currentPage, numPages } = this.state;
-    const { match } = this.props
 
     return this.state.loading === true
       ? <div>loading</div>

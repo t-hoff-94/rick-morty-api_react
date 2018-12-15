@@ -25,7 +25,7 @@ class Home extends Component {
             {characters.map(character => {
               if(character.id === 1) {
                 return (
-                  <Character key={character.id} data={character} special='true' />
+                  <Character key={character.id} data={character} special={true} />
                 )
               } else {
                 return <Character key={character.id} data={character} />
