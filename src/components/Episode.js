@@ -17,7 +17,7 @@ const EpisodeInfo = ({ name, episode, airDate })=> (
         <h4>Air Date <div>{airDate}</div></h4>
       </li>
     </ul>
-    <h2 style={{marginTop: '2em'}} className='episode-header'>Episode Characters <span style={{fontSize: '16px'}}>(some of them)</span></h2>
+    <h2 className='episode-header'>Episode Characters <span style={{fontSize: '16px'}}>(some of them)</span></h2>
   </div>
 )
 

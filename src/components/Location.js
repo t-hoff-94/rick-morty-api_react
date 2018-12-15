@@ -15,7 +15,7 @@ const LocationInfo = ({ name, dimension, type })=> (
         <h4>Type <div>{type}</div></h4>
       </li>
     </ul>
-    <h2 style={{marginTop: '3em'}} className='episode-header'>Location Residents <span style={{fontSize: '16px'}}>(some of them)</span></h2>
+    <h2 className='episode-header'>Location Residents <span style={{fontSize: '16px'}}>(some of them)</span></h2>
   </div>
 )
 
